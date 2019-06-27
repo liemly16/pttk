@@ -1,0 +1,150 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Siêu Thị Điện Thoại Di Động Phương Nam</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/paper-kit.css?v=2.1.0" rel="stylesheet" />
+    <link href="/assets/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/nucleo-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+        <nav class="navbar bg-info">
+            <div class="container">
+                <a class="navbar-brand" href="/">Di động Phương Nam</a>
+            </div>
+        </nav>
+
+    <div class="container">
+        <div class="wrap">
+            <h3 class="section-title" style="margin-bottom: 30px">Điện thoại di động</h3>
+            <div class="row row-eq-height">
+                @foreach (DataRow dr in Model.dt.Rows)
+                {
+                    <div class="col-md-3">
+                        <div class="card card-product card-plain">
+                            <div class="card-image">
+                                <a href="/Home/Detail/@dr["ma"].ToString()">
+                                    <img src="@dr["anhDaiDien"].ToString()"
+                                         alt="Rounded Image" class="img-rounded img-responsive">
+                                </a>
+                                <div class="card-body">
+                                    <div class="card-description">
+                                        <h5 class="card-title"><a href="/Home/Detail/@dr["ma"].ToString()">@dr["tenSanPham"].ToString()</a></h5>
+                                    </div>
+                                    <div class="price">
+                                        <span class="text-danger" style="font-weight: bold">@dr["gia"].ToString() đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+             
+                }
+                
+            </div>
+        </div>
+
+        <div class="wrap">
+            <h3 class="section-title" style="margin-bottom: 30px">Phụ kiện</h3>
+            <div class="row row-eq-height">
+                @foreach (DataRow dr in Model.pk.Rows)
+                {
+                    <div class="col-md-3">
+                        <div class="card card-product card-plain">
+                            <div class="card-image">
+                                <a href="/Home/Detail/@dr["ma"].ToString()">
+                                    <img src="@dr["anhDaiDien"].ToString()"
+                                         alt="Rounded Image" class="img-rounded img-responsive">
+                                </a>
+                                <div class="card-body">
+                                    <div class="card-description">
+                                        <h5 class="card-title"><a href="/Home/Detail/@dr["ma"].ToString()">@dr["tenSanPham"].ToString()</a></h5>
+                                    </div>
+                                    <div class="price">
+                                        <span class="text-danger" style="font-weight: bold">@dr["gia"].ToString() đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer footer-big">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <div class="links">
+                        <ul class="uppercase-links">
+                            <li>
+                                <a href="#">
+                                    Thanh Liêm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Bảo Lâm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Hoài Nam
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Việt Tân
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Thành Tâm
+                                </a>
+                            </li>
+
+
+                        </ul>
+                        <hr>
+
+                        <div class="copyright">
+                            ©
+                            <script>document.write(new Date().getFullYear())</script>, Đồ án Phân Tích Thiết Kế Hệ Thống Thông Tin
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

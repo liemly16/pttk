@@ -1,0 +1,148 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Siêu Thị Điện Thoại Di Động Phương Nam</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/paper-kit.css?v=2.1.0" rel="stylesheet" />
+    <link href="/assets/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/nucleo-icons.css" rel="stylesheet">
+    <link href="/style.css" />
+</head>
+<body>
+    <nav class="navbar bg-info">
+        <div class="container">
+            <a class="navbar-brand" href="/">Di động Phương Nam</a>
+        </div>
+    </nav>
+
+    <div> 
+        @{
+            if (@Model.Rows.Count > 0)
+            {
+                <div>
+                    @{ if (@Model.Rows[0]["laDienThoai"].ToString() == "1"){
+                    <div *ngIf="isPhone" class="container product-detail">
+                        <div class="row title-row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-center">
+                                <div><img class="img-thumbnail img-responsive" width="100%" src="@Model.Rows[0]["anhDaiDien"].ToString()" alt=""></div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <h2>@Model.Rows[0]["tenSanPham"].ToString()</h2>
+                                <h4 class="price"><strong>@Model.Rows[0]["gia"].ToString() đ</strong></h4>
+                                <hr>
+                                <p>
+                                    @Model.Rows[0]["moTa"].ToString()
+                                </p>
+                                <hr>
+
+                                <h6>Thông số kĩ thuật</h6>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Kích thước: Dài @Model.Rows[0]["chieuDai"].ToString() mm - Rộng @Model.Rows[0]["chieuRong"].ToString() mm - Dày @Model.Rows[0]["chieuCao"].ToString() mm</li>
+                                    <li class="list-group-item">Hệ điều hành: @Model.Rows[0]["heDieuHanh"]</li>
+                                    <li class="list-group-item">Xuất xứ: @Model.Rows[0]["xuatXu"]</li>
+                                    <li class="list-group-item">Thời gian bảo hành: @Model.Rows[0]["thoiGianBaoHanh"] tháng</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    else {
+                    <div *ngIf="!isPhone" class="container product-detail">
+                        <div class="row title-row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-center">
+                                <div><img class="img-thumbnail img-responsive" width="100%" src="@Model.Rows[0]["anhDaiDien"].ToString()" alt=""></div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <h4 style="font-weight: bold">@Model.Rows[0]["tenSanPham"].ToString()</h4>
+                                <br>
+                                <h6 style="font-size: 14px" class="price text-danger">@Model.Rows[0]["gia"].ToString() đ</h6>
+                                <hr>
+                                <p>
+                                    @Model.Rows[0]["moTa"].ToString()
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+             }
+
+          
+                </div>
+            }
+        }
+    </div>
+</body>
+
+<footer class="footer footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <div class="links">
+                    <ul class="uppercase-links">
+                        <li>
+                            <a href="#">
+                                Thanh Liêm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Bảo Lâm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Hoài Nam
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Việt Tân
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Thành Tâm
+                            </a>
+                        </li>
+
+
+                    </ul>
+                    <hr>
+
+                    <div class="copyright">
+                        ©
+                        <script>document.write(new Date().getFullYear())</script>, Đồ án Phân Tích Thiết Kế Hệ Thống Thông Tin
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
