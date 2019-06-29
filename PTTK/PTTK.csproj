@@ -126,9 +126,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\KhuyenMaiModel.cs" />
     <Compile Include="Models\SanPhamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,6 +142,9 @@
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\KhuyenMai\Index.cshtml" />
+    <Content Include="Views\KhuyenMai\Create.cshtml" />
+    <Content Include="Views\KhuyenMai\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
