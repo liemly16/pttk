@@ -1,0 +1,89 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    
+
+    <!--     Fonts and icons     -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/nucleo-icons.css" rel="stylesheet">
+    <title>Siêu Thị Điện Thoại Di Động Phương Nam</title>
+</head>
+<body>
+    <form method="post" name="Display">
+        @Html.ActionLink("Thêm khách hàng", "Insert")
+        <br />
+        @{
+            if (Model.Rows.Count > 0)
+            {
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <td>
+                                Mã Khách Hàng
+                            </td>
+                            <td>
+                                Loại Khách Hàng
+                            </td>
+                            <td>
+                                Là Khách Vip
+                            </td>
+                            <td>
+                                Họ tên
+                            </td>
+                            <td>Số điện thoại</td>
+                            <td>Địa chỉ</td>
+                            <td>Người đại diện</td>
+                            <td>Số điện thoại công ty</td>
+                            <td>Điểm tích lũy</td>
+                            <td>Sửa</td>
+                            <td>Xóa</td>
+                        </tr>
+                    </thead>
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                        <tr>
+                            <td>@dr["ma"].ToString()  </td>
+                            <td>@dr["loai"].ToString()  </td>
+                            <td>@dr["lakhachvip"].ToString()  </td>
+                            <td>@dr["ten"].ToString()  </td>
+                            <td>@dr["sodienthoai"].ToString()  </td>
+                            <td>@dr["diachi"].ToString()  </td>
+                            <td>@dr["nguoidaidien"].ToString()  </td>
+                            <td>@dr["sodienthoaicongty"].ToString()  </td>
+                            <td>@dr["diem"].ToString()  </td>
+                            <td>@Html.ActionLink("Sửa ", "Edit", new { ma = dr["ma"].ToString() })</td>
+                            <td>@Html.ActionLink("| Xóa", "Delete", new { ma = dr["ma"].ToString() })</td>
+                        </tr>
+                    }
+
+                </table>
+                <br />
+            }
+            else
+            {
+                <span> No records found!!</span>
+            }
+        }
+
+    </form>
+</body>
+</html>
